@@ -21,10 +21,11 @@ jobs:
         target: "/var/backend/babies-backend"
 
     - name: Executing remote command
+      run: ../var/backend/babies-backend
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: cd ../var/backend/babies-backend && yarn run deploy
+        script: yarn run deploy

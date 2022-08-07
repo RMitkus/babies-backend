@@ -18,7 +18,7 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
       with:
-        source: "./src"
+        source: "."
         target: "/var/backend/babies-backend"
 
     - name: Executing remote command

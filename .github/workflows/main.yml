@@ -18,7 +18,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
       with:
         source: "."
-        target: "/home/babies-backend"
+        target: "/var/backend/babies-backend"
 
     - name: Executing remote command
       uses: appleboy/ssh-action@master
@@ -28,5 +28,5 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-          cd /home/babies-backend
+          cd ~/../var/backend/babies-backend
           yarn run deploy

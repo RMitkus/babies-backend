@@ -21,8 +21,8 @@ jobs:
         target: "/var/backend/babies-backend"
 
     - name: Executing remote command
-      working-directory: ../var/backend/babies-backend
       uses: appleboy/ssh-action@master
+      working-directory: ../var/backend/babies-backend
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}

@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "nodemon ./src/app.ts",
     "start": "npx prisma generate && node ./dist/server.js",
-    "deploy": "yarn && yarn build && pm2 restart ./dist/app.js"
+    "deploy": "cd /var/backend/babies-backend && yarn && yarn build && pm2 restart ./dist/app.js"
   },
   "author": "Rytis Mitkus",
   "license": "MIT",

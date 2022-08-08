@@ -21,6 +21,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Babies backend server, hello stranger!');
 });
 
+app.get('/name', (req: Request, res: Response) => {
+  res.json({ myName: 'rytis' });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

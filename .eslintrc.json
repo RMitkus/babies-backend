@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-        "airbnb-base"
+        "standard"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -12,8 +12,165 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+		"destructuring-newline"
     ],
     "rules": {
+        "semi": [
+			"error",
+			"never"
+		],
+		"no-trailing-spaces": [
+			"error"
+		],
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 1
+			}
+		],
+		"max-len": [
+			"error",
+			{
+				"code": 160
+			}
+		],
+		"no-unused-vars": [
+			"error"
+		],
+		"destructuring-newline/object-property-newline": 2,
+		"object-curly-spacing": [
+			"error",
+			"always"
+		],
+		"object-curly-newline": [
+			"error",
+			{
+				"ObjectExpression": {
+					"multiline": true,
+					"minProperties": 1
+				},
+				"ObjectPattern": {
+					"multiline": true,
+					"minProperties": 2
+				},
+				"ImportDeclaration": {
+					"multiline": true,
+					"minProperties": 2
+				}
+			}
+		],
+		"object-property-newline": [
+			"error",
+			{
+				"allowMultiplePropertiesPerLine": false
+			}
+		],
+		"array-bracket-newline": [
+			"error",
+			{
+				"multiline": true,
+				"minItems": 3
+			}
+		],
+		"array-element-newline": [
+			"error",
+			{
+				"ArrayExpression": {
+					"multiline": true,
+					"minItems": 2
+				},
+				"ArrayPattern": {
+					"multiline": true,
+					"minItems": 3
+				}
+			}
+		],
+		"padded-blocks": [
+			"error",
+			"never"
+		],
+		"padding-line-between-statements": [
+			"error",
+			{
+				"blankLine": "always",
+				"prev": [
+					"const",
+					"let",
+					"var"
+				],
+				"next": "*"
+			},
+			{
+				"blankLine": "any",
+				"prev": [
+					"const",
+					"let",
+					"var"
+				],
+				"next": [
+					"const",
+					"let",
+					"var"
+				]
+			},
+			{
+				"blankLine": "always",
+				"prev": [
+					"block-like"
+				],
+				"next": [
+					"*"
+				]
+			}
+		],
+		"newline-before-return": [
+			"error"
+		],
+		"indent": [
+			"error",
+			"tab"
+		],
+		"no-tabs": [
+			"error",
+			{
+				"allowIndentationTabs": true
+			}
+		],
+		"curly": "error",
+		"brace-style": [
+			"error",
+			"1tbs",
+			{
+				"allowSingleLine": false
+			}
+		],
+		"import/newline-after-import": [
+			"error"
+		],
+		"import/order": [
+			"error",
+			{
+				"newlines-between": "always",
+				"groups": [
+					"builtin",
+					"external",
+					"internal",
+					"sibling",
+					"parent"
+				],
+				"alphabetize": {
+					"order": "asc"
+				}
+			}
+		],
+		"import/extensions": [
+			1,
+			{
+				"react": "always",
+				"json": "always"
+			}
+		],
+		"import/prefer-default-export": "off"
     }
 }

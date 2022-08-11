@@ -1,3 +1,4 @@
+import { ApolloServer } from 'apollo-server-express'
 import { config } from 'dotenv'
 import express, {
 	Application, Request, Response
@@ -18,21 +19,39 @@ app.use(express.urlencoded({
 }))
 
 app.get('/', (req: Request, res: Response) => {
-	res.send('Babies backend server, hello stranger!')
-})
-
-app.get('/name', (req: Request, res: Response) => {
 	res.json({
-		myName: 'rytis'
+		hello: 'Babies backend server, hello stranger!'
 	})
 })
+// graphql server
 
-app.get('/names', (req: Request, res: Response) => {
-	res.json({
-		myName: 'rytis',
-		minde: 'pinde'
+// types query/mutation/subscription
+const typeDefs = `
+    type Query {
+        totalPosts: Int!
+    }
+`
+
+// resolvers
+const resolvers = {
+	Query: {
+		totalPosts: () => 42
+	}
+}
+
+async function startServer () {
+	const apolloServer = new ApolloServer({
+		typeDefs,
+		resolvers
 	})
-})
+
+	await apolloServer.start()
+	apolloServer.applyMiddleware({
+		app
+	})
+}
+
+startServer()
 
 const PORT = process.env.PORT || 5000
 

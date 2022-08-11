@@ -27,6 +27,13 @@ app.get('/name', (req: Request, res: Response) => {
 	})
 })
 
+app.get('/names', (req: Request, res: Response) => {
+	res.json({
+		myName: 'rytis',
+		minde: 'pinde'
+	})
+})
+
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {

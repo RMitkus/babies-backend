@@ -1,9 +1,10 @@
-import { ApolloServer } from 'apollo-server-express'
 import { config } from 'dotenv'
 import express, {
 	Application, Request, Response
 } from 'express'
 import morgan from 'morgan'
+
+import graphqlServer from './server/graphql/graphql'
 
 config()
 
@@ -23,8 +24,6 @@ app.get('/', (req: Request, res: Response) => {
 		hello: 'Babies backend server, hello stranger!'
 	})
 })
-// graphql server
-
 // types query/mutation/subscription
 const typeDefs = `
     type Query {
@@ -39,21 +38,11 @@ const resolvers = {
 	}
 }
 
-async function startServer () {
-	const apolloServer = new ApolloServer({
-		typeDefs,
-		resolvers
-	})
-
-	await apolloServer.start()
-	apolloServer.applyMiddleware({
-		app
-	})
-}
-
-startServer()
-
-const PORT = process.env.PORT || 5000
+graphqlServer(app, {
+	typeDefs,
+	resolvers
+})
+const PORT = process.env.PORT || 8000
 
 app.listen(PORT, () => {
 	console.log(`Server is listening on port http://localhost:${PORT}`)

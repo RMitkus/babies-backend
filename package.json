@@ -22,6 +22,7 @@
     "graphql": "^16.5.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.19",
+    "npm": "^8.17.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
